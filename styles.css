@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #ffffff);
+  color: #1a237e;
+  margin: 0;
+  padding: 0;
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(135deg, #ffffff, #e3f2fd);
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #90caf9;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo img {
+  height: 50px;
+  margin-right: 20px;
+}
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav ul li a {
+  color: #1a237e;
+  text-decoration: none;
+  font-family: 'Audiowide', sans-serif;
+  transition: color 0.3s;
+}
+nav ul li a:hover {
+  color: #ffeb3b;
+}
+
+/* COMMON GALLERY HEADINGS */
+.gallery h2 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-family: 'Audiowide', sans-serif;
+}
+
+/* Flickity overrides */
+.flickity-page-dots { display: none; }
+.flickity-button {
+  background: rgba(255,255,255,0.8);
+  border: none;
+  color: #1a237e;
+}
+.flickity-button:hover {
+  background: #ffeb3b;
+}
+
+/* HERO GALLERY (3 per view) */
+.hero-gallery {
+  max-width: 1200px;
+  margin: 40px auto 20px;
+  padding: 0 20px;
+}
+.hero-gallery h2 { font-size: 26px; }
+.hero-carousel .carousel-cell {
+  width: calc((100% - 2 * 20px) / 3);
+  margin-right: 20px;
+}
+
+/* VERTICAL GALLERY (4 per view) */
+/* covers both .vertical-gallery and .vertical-carousel usage */
+.vertical-gallery .carousel-cell,
+.vertical-carousel .carousel-cell {
+  width: 280px;
+  margin-right: 20px;
+  box-sizing: border-box;
+}
+
+/* HORIZONTAL GALLERY (3 per view) */
+/* covers both .horizontal-gallery and .horizontal-carousel usage */
+.horizontal-gallery .carousel-cell,
+.horizontal-carousel .carousel-cell {
+  width: 320px;
+  margin-right: 30px;
+  box-sizing: border-box;
+}
+
+/* CELL STYLES */
+.carousel-cell {
+  position: relative;
+  background: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.carousel-cell:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+.carousel-cell img {
+  width: 100%;
+  display: block;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px 10px;
+}
+.details .info .title {
+  margin: 0;
+  font-size: 14px;
+  font-family: 'Audiowide', sans-serif;
+  color: #1a237e;
+}
+.details .info .year {
+  font-size: 12px;
+  color: #666;
+}
+.channel-logo {
+  width: 40px !important;
+  height: 40px !important;
+  object-fit: contain;
+}
+
+/* the light‑blue caption bar */
+.title-frame {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(173, 216, 230, 0.8); /* lightblue @ 80% */
+  padding: 4px 0;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* the project title inside it */
+.project-title {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: bold;
+  font-size: 14px;    /* adjust up or down as needed */
+  color: #1a237e;     /* dark blue text for contrast */
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .hero-carousel .carousel-cell {
+    width: calc((100% - 2*10px)/3);
+  }
+  .vertical-gallery .carousel-cell,
+  .vertical-carousel .carousel-cell {
+    width: 200px;
+  }
+  .horizontal-gallery .carousel-cell,
+  .horizontal-carousel .carousel-cell {
+    width: 220px;
+  }
+}
+
+/* Remove that gallery‐level padding so our carousel gets the full 1020px */
+.horizontal-gallery {
+  padding: 0;          /* drop the 0 20px */
+}
+
+/* Constrain the Flickity carousel itself to exactly 3 cells+2 gaps */
+.horizontal-gallery .carousel {
+  max-width: 1020px;   /* 3×320 + 2×30 */
+  margin: 0 auto;      /* center it */
+}
+
+/* Hide any overflow in Flickity’s viewport */
+.horizontal-gallery .flickity-viewport {
+  overflow: hidden !important;
+}
