@@ -84,37 +84,32 @@ header {
   font-weight:bold; font-size:14px; color:#1a237e;
 }
 
-/* ── ADULT SERIES (280×420) ─────────────────────────────── */
-/* Desktop: 3 por vista / Móvil: 2 por vista, scroll 1 en 1 */
-.vertical-gallery, .vertical-carousel {
-  max-width:900px; /* 3×280 + 2×20 */
-  margin:0 auto;
-  padding:0 20px;
+/* ── ADULT SERIES (280×420) ───────────────────────────── */
+.vertical-gallery,
+.vertical-carousel {
+  max-width: 900px;     /* 3×280 + 2×10 + padding: 20px -> 900 total */
+  margin: 0 auto;
+  padding: 0 20px;
+  overflow: hidden;
 }
 .vertical-carousel .carousel-cell {
-  width:280px; margin-right:20px; box-sizing:border-box;
-}
-@media (max-width:768px) {
-  .vertical-carousel .carousel-cell {
-    width:calc(50% - 10px) !important;
-    margin-right:20px;
-  }
+  width: 280px;
+  margin-right: 10px;   /* antes 20px, ahora 10px */
 }
 
-/* ── ADULT PROJECTS (320×180) ───────────────────────────── */
-/* Desktop: 3 por vista / Móvil: 1 por vista */
-.horizontal-gallery, .horizontal-carousel {
-  max-width:1020px; /* 3×320 + 2×30 */
-  margin:0 auto; padding:0 20px;
+/* ── ADULT PROJECTS (320×180) ─────────────────────────── */
+.horizontal-gallery,
+.horizontal-carousel {
+  max-width: 1020px;    /* 3×320 + 2×10 + padding: 20px -> 1020 total */
+  margin: 0 auto;
+  padding: 0 20px;
+  overflow: hidden;
 }
 .horizontal-carousel .carousel-cell {
-  width:320px; margin-right:30px; box-sizing:border-box;
+  width: 320px;
+  margin-right: 10px;   /* antes 30px, ahora 10px */
 }
-@media (max-width:768px) {
-  .horizontal-carousel .carousel-cell {
-    width:100% !important; margin-right:0 !important;
-  }
-}
+
 
 /* ── CELDAS COMUNES ─────────────────────────────────────── */
 .carousel-cell {

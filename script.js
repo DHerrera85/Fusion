@@ -14,21 +14,27 @@ function initCarousels(){
     draggable:true
   });
 
-  // ADULT SERIES: 3 desktop / 2 móvil (scroll 1 en 1)
-  vertFlick = new Flickity('.vertical-carousel',{
-    cellAlign:'left', contain:true,
-    groupCells:isMobile?2:3, wrapAround:false,
-    pageDots:false, prevNextButtons:true,
-    draggable:true
-  });
+// Adult Series: 3 desktop / 2 móvil
+vertFlick = new Flickity('.vertical-carousel', {
+  cellAlign: 'left',
+  contain: true,
+  groupCells: isMobile ? 2 : false,   // <-- false para 1 en 1 en desktop
+  wrapAround: false,
+  pageDots: false,
+  prevNextButtons: true,
+  draggable: true
+});
 
-  // ADULT PROJECTS: 3 desktop / 1 móvil (scroll 1 en 1)
-  horiFlick = new Flickity('.horizontal-carousel',{
-    cellAlign:'left', contain:true,
-    groupCells:isMobile?1:3, wrapAround:false,
-    pageDots:false, prevNextButtons:true,
-    draggable:true
-  });
+// Adult Projects: 3 desktop / 1 móvil
+horiFlick = new Flickity('.horizontal-carousel', {
+  cellAlign: 'left',
+  contain: true,
+  groupCells: isMobile ? 1 : false,   // <-- false para 1 en 1 en desktop
+  wrapAround: false,
+  pageDots: false,
+  prevNextButtons: true,
+  draggable: true
+});
 
   // NAV MENU: sólo en móvil
   if(isMobile){
