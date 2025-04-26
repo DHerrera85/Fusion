@@ -1,66 +1,62 @@
-let heroFlick, vertFlick, horiFlick, navFlick;
+window.addEventListener('DOMContentLoaded', initCarousels);
+window.addEventListener('resize', debounce(initCarousels, 200));
 
-function initCarousels(){
+let heroFlick, vertFlicks = [], horiFlicks = [], navFlick;
+
+function initCarousels() {
   const isMobile = window.innerWidth <= 768;
 
-  // destruir instancias previas
-  [heroFlick, vertFlick, horiFlick, navFlick].forEach(f => f && f.destroy());
+  // destruye héroe y nav si existen
+  heroFlick && heroFlick.destroy();
+  navFlick  && navFlick.destroy();
+  vertFlicks.forEach(f => f.destroy());
+  horiFlicks.forEach(f => f.destroy());
+  vertFlicks = [];
+  horiFlicks = [];
 
-  // HERO: 3 en desktop / 1 en móvil
+  // HERO (igual que antes)
   heroFlick = new Flickity('.hero-carousel', {
-    cellAlign: 'left',
-    contain: true,
+    cellAlign: 'left', contain: true,
     groupCells: isMobile ? 1 : 3,
-    wrapAround: true,
-    pageDots: false,
-    prevNextButtons: true,
-    draggable: true
+    wrapAround: true, pageDots: false,
+    prevNextButtons: true, draggable: true
   });
 
-  // ADULT SERIES: paso a paso (1 en 1 siempre)
-  vertFlick = new Flickity('.vertical-carousel', {
-    cellAlign: 'left',
-    contain: true,
-    groupCells: false,
-    wrapAround: false,
-    pageDots: false,
-    prevNextButtons: true,
-    draggable: true
+  // VERTICAL: inicializa cada uno
+  document.querySelectorAll('.vertical-carousel').forEach(el => {
+    vertFlicks.push(new Flickity(el, {
+      cellAlign: 'left', contain: true,
+      groupCells: false, wrapAround: false,
+      pageDots: false, prevNextButtons: true,
+      draggable: true
+    }));
   });
 
-  // ADULT PROJECTS: paso a paso (1 en 1 siempre)
-  horiFlick = new Flickity('.horizontal-carousel', {
-    cellAlign: 'left',
-    contain: true,
-    groupCells: false,
-    wrapAround: false,
-    pageDots: false,
-    prevNextButtons: true,
-    draggable: true
+  // HORIZONTAL: inicializa cada uno
+  document.querySelectorAll('.horizontal-carousel, .another-horizontal-carousel').forEach(el => {
+    horiFlicks.push(new Flickity(el, {
+      cellAlign: 'left', contain: true,
+      groupCells: false, wrapAround: false,
+      pageDots: false, prevNextButtons: true,
+      draggable: true
+    }));
   });
 
-  // NAV MENU (solo en móvil)
+  // NAV sólo en móvil
   if (isMobile) {
     navFlick = new Flickity('.nav-carousel', {
-      cellAlign: 'left',
-      contain: true,
-      groupCells: 1,
-      wrapAround: false,
-      pageDots: false,
-      prevNextButtons: true,
+      cellAlign: 'left', contain: true,
+      groupCells: 1, wrapAround: false,
+      pageDots: false, prevNextButtons: true,
       draggable: true
     });
   }
 }
 
-function debounce(fn, ms){
+function debounce(fn, ms) {
   let t;
   return () => {
     clearTimeout(t);
     t = setTimeout(fn, ms);
   };
 }
-
-window.addEventListener('DOMContentLoaded', initCarousels);
-window.addEventListener('resize', debounce(initCarousels, 200));
-
