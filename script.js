@@ -19,6 +19,7 @@ function initCarousels() {
     cellAlign: 'left', contain: true,
     groupCells: isMobile ? 1 : 3,
     wrapAround: true, pageDots: false,
+    imagesLoaded: true,
     prevNextButtons: true, draggable: true
   });
 
@@ -28,6 +29,7 @@ function initCarousels() {
       cellAlign: 'left', contain: true,
       groupCells: false, wrapAround: false,
       pageDots: false, prevNextButtons: true,
+      imagesLoaded: true,
       draggable: true
     }));
   });
@@ -38,6 +40,7 @@ function initCarousels() {
       cellAlign: 'left', contain: true,
       groupCells: false, wrapAround: false,
       pageDots: false, prevNextButtons: true,
+      imagesLoaded: true,
       draggable: true
     }));
   });
@@ -48,6 +51,7 @@ function initCarousels() {
       cellAlign: 'left', contain: true,
       groupCells: 1, wrapAround: false,
       pageDots: false, prevNextButtons: true,
+      imagesLoaded: true,
       draggable: true
     });
   }
