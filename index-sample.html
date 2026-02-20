@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fusion | Magazine Sample</title>
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #f6f1e7;
+      --ink: #1f1b16;
+      --ember: #cc4d2f;
+      --ocean: #2a6f7f;
+      --olive: #4a5b3b;
+      --sand: #e2d6c2;
+      --line: rgba(31, 27, 22, 0.18);
+      --shadow: 0 12px 30px rgba(12, 10, 8, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Barlow", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% 20%, #fffaf0 0, transparent 60%),
+        radial-gradient(circle at 80% 10%, #f3ead8 0, transparent 55%),
+        linear-gradient(120deg, #f8f3e9, #efe6d7);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 6vw;
+      border-bottom: 1px solid var(--line);
+      background: rgba(246, 241, 231, 0.9);
+      backdrop-filter: blur(6px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+
+    .brand-title {
+      font-family: "Barlow", sans-serif;
+      font-size: 26px;
+      letter-spacing: 0.5px;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      font-size: 12px;
+    }
+
+    .pill {
+      padding: 8px 14px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      background: transparent;
+    }
+
+    .pill.emph {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      padding: 18px 6vw;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    .nav a {
+      padding: 4px 8px;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav a:hover {
+      border-bottom-color: var(--ember);
+    }
+
+    .page {
+      padding: 30px 6vw 60px;
+      display: grid;
+      gap: 28px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 28px;
+    }
+
+    .hero-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+      display: grid;
+      grid-template-rows: 1fr auto;
+    }
+
+    .hero-card .hero-content {
+      padding: 18px 20px 22px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 11px;
+      color: var(--ember);
+      font-weight: 700;
+    }
+
+    .hero-title {
+      font-family: "Barlow", sans-serif;
+      font-size: 32px;
+      margin: 0;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(31, 27, 22, 0.65);
+    }
+
+    .hero-tag {
+      padding: 2px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--sand);
+      font-weight: 600;
+      font-size: 11px;
+    }
+
+    .stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .stack-card {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 14px;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(246, 241, 231, 0.75);
+    }
+
+    .stack-title {
+      font-family: "Barlow", sans-serif;
+      font-size: 18px;
+      margin: 0 0 6px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head h2 {
+      font-family: "Barlow", sans-serif;
+      font-size: 22px;
+      margin: 0;
+    }
+
+    .section-head span {
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      font-size: 11px;
+    }
+
+    .grid-horizontal {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .carousel {
+      margin-top: 18px;
+    }
+
+    .horizontal-carousel .carousel-cell {
+      width: calc((100% - 2 * 18px) / 3);
+      margin-right: 18px;
+    }
+
+    .horizontal-carousel .carousel-cell:last-child {
+      margin-right: 0;
+    }
+
+    .flickity-page-dots {
+      display: none;
+    }
+
+    .flickity-button {
+      background: #fff;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      box-shadow: 0 8px 18px rgba(20, 16, 12, 0.15);
+    }
+
+    .flickity-button:hover {
+      background: var(--sand);
+    }
+
+    .flickity-prev-next-button {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+    }
+
+    .card-horizontal {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      box-shadow: 0 10px 22px rgba(30, 24, 20, 0.12);
+    }
+
+    .card-media {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+    }
+
+    .ia-carousel .carousel-cell {
+      width: calc((100% - 2 * 18px) / 3);
+      margin-right: 18px;
+    }
+
+    .ia-carousel .carousel-cell:last-child {
+      margin-right: 0;
+    }
+
+    .adult-series-carousel .carousel-cell {
+      width: calc((100% - 3 * 18px) / 4);
+      margin-right: 18px;
+    }
+
+    .adult-series-carousel .carousel-cell:last-child {
+      margin-right: 0;
+    }
+
+    .ia-card .card-media {
+      aspect-ratio: 1 / 1;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .adult-series-card .card-media {
+      aspect-ratio: 280 / 420;
+    }
+
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-tag {
+      position: absolute;
+      left: 12px;
+      bottom: -12px;
+      background: #ff7a2c;
+      color: #fff;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      padding: 6px 12px;
+      font-weight: 700;
+    }
+
+    .card-tag::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 10px 10px 0;
+      border-color: transparent rgba(255, 255, 255, 0.65) transparent transparent;
+    }
+
+    .card-horizontal .content {
+      padding: 20px 14px 16px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .card-horizontal .content h3 {
+      font-family: "Barlow", sans-serif;
+      font-size: 18px;
+      margin: 0;
+      line-height: 1.2;
+      border-bottom: 2px solid #ff7a2c;
+      padding-bottom: 6px;
+    }
+
+    .card-horizontal .content p {
+      margin: 0;
+      font-size: 14px;
+      color: rgba(31, 27, 22, 0.7);
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .meta-note {
+      font-size: 12px;
+      color: rgba(31, 27, 22, 0.75);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-weight: 600;
+    }
+
+    .meta-icon {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    #horizontal .card-media img {
+      border-radius: 0 0 14px 14px;
+    }
+
+    #adult-series .card-media img {
+      border-radius: 0 0 14px 14px;
+    }
+
+    #action-adventure-series .card-media img {
+      border-radius: 0 0 14px 14px;
+    }
+
+    #comics .card-media img {
+      border-radius: 0 0 14px 14px;
+    }
+
+    #ia-creations .card-media img {
+      border-radius: 0 0 14px 14px;
+    }
+
+    #all-ages-projects .card-media img {
+      border-radius: 0 0 14px 14px;
+    }
+
+    .grid-vertical {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+    }
+
+    .card-vertical {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 22px rgba(30, 24, 20, 0.12);
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    .card-vertical .content {
+      padding: 12px 14px 16px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .card-vertical h3 {
+      font-family: "Barlow", sans-serif;
+      font-size: 17px;
+      margin: 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      background: #efe1cb;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      width: fit-content;
+    }
+
+    .footer-note {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      color: rgba(31, 27, 22, 0.6);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .stack-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .horizontal-carousel .carousel-cell {
+        width: 100%;
+        margin-right: 0;
+      }
+
+      .ia-carousel .carousel-cell {
+        width: 100%;
+        margin-right: 0;
+      }
+
+      .adult-series-carousel .carousel-cell {
+        width: 100%;
+        margin-right: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .top-actions {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <img src="img/logos/new-fusion-logo-ia.png" alt="Fusion logo" />
+        <div>
+          <div class="brand-title">Fusion Archive</div>
+          <div class="eyebrow">Illustrated catalog</div>
+        </div>
+      </div>
+      <div class="top-actions">
+        <a class="pill" href="#horizontal">Series</a>
+        <a class="pill" href="#vertical">Comics</a>
+        <a class="pill emph" href="#insights">Spotlight</a>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#insights">Spotlight</a>
+      <a href="#horizontal">Horizontal Series</a>
+      <a href="#adult-series">Adult Series</a>
+      <a href="#ia-creations">IA Creations</a>
+      <a href="#action-adventure-series">Action/Adventure Series</a>
+      <a href="#all-ages-projects">All Ages Projects</a>
+      <a href="#comics">Comics</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="hero-grid" id="insights">
+      <article class="hero-card">
+        <img src="img/ia-creations/inxya-cronicas-del-quinto-alba-760x760.jpeg" alt="Inxya" />
+        <div class="hero-content">
+          <span class="eyebrow">Spotlight dossier</span>
+          <h1 class="hero-title">Mythic horizons: building the fifth dawn universe</h1>
+          <div class="hero-meta">
+            <span>Feature</span>
+            <span class="hero-tag">New series</span>
+            <span>2026</span>
+          </div>
+        </div>
+      </article>
+      <div class="stack">
+        <article class="stack-card">
+          <img src="img/ia-creations/solarquis-760x760.jpeg" alt="Solarquis" />
+          <div>
+            <div class="eyebrow">Field notes</div>
+            <h3 class="stack-title">Solarquis: a solar-punk line for new adventures</h3>
+            <div class="hero-meta">
+              <span>Interview</span>
+              <span>Studio</span>
+            </div>
+          </div>
+        </article>
+        <article class="stack-card">
+          <img src="img/ia-creations/new-pantera-760x760.jpeg" alt="New Pantera" />
+          <div>
+            <div class="eyebrow">Studio report</div>
+            <h3 class="stack-title">Reforging the feline vigilante legacy</h3>
+            <div class="hero-meta">
+              <span>Process</span>
+              <span>2025</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="horizontal">
+      <div class="section-head">
+        <h2>Adult Projects</h2>
+        <span>Editorial cards</span>
+      </div>
+      <div class="carousel horizontal-carousel" data-flickity='{"cellAlign":"left","contain":true,"wrapAround":false,"pageDots":false,"groupCells":false}'>
+        <article class="carousel-cell card-horizontal">
+          <div class="card-media">
+            <img src="img/hor/adult/apukunapa-kutimuynin-320x180px.png" alt="Apukunapa Kutimuyñin" />
+          </div>
+          <div class="content">
+            <h3>Apukunapa Kutimuyñin</h3>
+            <div class="card-meta">
+              <span class="meta-note">Omar Vallejos</span>
+              <img class="meta-icon" src="img/flags/peru.png" alt="Perú" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal">
+          <div class="card-media">
+            <img src="img/hor/adult/circo-gomez-320x180px.png" alt="Circo Gomez" />
+          </div>
+          <div class="content">
+            <h3>Circo Gomez</h3>
+            <div class="card-meta">
+              <span class="meta-note">2025</span>
+              <img class="meta-icon" src="img/logos/vix-orange-transparent.png" alt="ViX" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal">
+          <div class="card-media">
+            <img src="img/hor/adult/tonall-horizontal-320x180.png" alt="Tonall y los Guerreros de la Luz" />
+          </div>
+          <div class="content">
+            <h3>Tonall y los Guerreros de la Luz</h3>
+            <div class="card-meta">
+              <span class="meta-note">Rodrigo Olivera</span>
+              <img class="meta-icon" src="img/flags/mexico.png" alt="México" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal">
+          <div class="card-media">
+            <img src="img/hor/adult/starbreaker-02-320x180.png" alt="Starbreaker" />
+          </div>
+          <div class="content">
+            <h3>Starbreaker</h3>
+            <div class="card-meta">
+              <span class="meta-note">Pat Mosquera</span>
+              <img class="meta-icon" src="img/flags/ecuador.png" alt="Ecuador" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal">
+          <div class="card-media">
+            <img src="img/hor/adult/holy-avenger-horizontal-320x180.png" alt="Holy Avenger" />
+          </div>
+          <div class="content">
+            <h3>Holy Avenger</h3>
+            <div class="card-meta">
+              <span class="meta-note">Marcelo Cassaro</span>
+              <img class="meta-icon" src="img/flags/brazil.png" alt="Brasil" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal">
+          <div class="card-media">
+            <img src="img/hor/adult/mariachi-legends-horizontal-320x180.jpg" alt="Mariachi Legends" />
+          </div>
+          <div class="content">
+            <h3>Mariachi Legends</h3>
+            <div class="card-meta">
+              <span class="meta-note">Halberd Studios</span>
+              <img class="meta-icon" src="img/flags/mexico.png" alt="México" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal">
+          <div class="card-media">
+            <img src="img/hor/adult/yorudandistrict-horizontal-320x180.jpg" alt="Yorudian District" />
+          </div>
+          <div class="content">
+            <h3>Yorudian District</h3>
+            <div class="card-meta">
+              <span class="meta-note">Bellolandia Studios</span>
+              <img class="meta-icon" src="img/flags/argentina.png" alt="Argentina" />
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="adult-series">
+      <div class="section-head">
+        <h2>Adult Series</h2>
+        <span>5 series destacadas</span>
+      </div>
+      <div class="carousel adult-series-carousel" data-flickity='{"cellAlign":"left","contain":true,"wrapAround":false,"pageDots":false,"groupCells":false}'>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/series/adult/sociedadedavirtude-vertical-280x420.jpg" alt="Sociedade da Virtude" />
+          </div>
+          <div class="content">
+            <h3>Sociedade da Virtude</h3>
+            <div class="card-meta">
+              <span class="meta-note">2024</span>
+              <img class="meta-icon" src="img/logos/max-grey-transparent.png" alt="Max" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/series/adult/astronauta-vertical-280x420.jpg" alt="Astronauta" />
+          </div>
+          <div class="content">
+            <h3>Astronauta</h3>
+            <div class="card-meta">
+              <span class="meta-note">2024</span>
+              <img class="meta-icon" src="img/logos/hbo-grey-transparent.png" alt="HBO" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/series/adult/super-drags-vertical-280x420.png" alt="Super Drags" />
+          </div>
+          <div class="content">
+            <h3>Super Drags</h3>
+            <div class="card-meta">
+              <span class="meta-note">2018</span>
+              <img class="meta-icon" src="img/logos/netflix-red.png" alt="Netflix" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/series/adult/la-familia-de-barrio-vertical-280x420.jpg" alt="La Familia de Barrio" />
+          </div>
+          <div class="content">
+            <h3>La Familia de Barrio</h3>
+            <div class="card-meta">
+              <span class="meta-note">2024</span>
+              <img class="meta-icon" src="img/logos/paramount-plus-blue-transparent.png" alt="Paramount+" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/series/adult/city-hunters-280x420.png" alt="City Hunters" />
+          </div>
+          <div class="content">
+            <h3>City Hunters</h3>
+            <div class="card-meta">
+              <span class="meta-note">2006</span>
+              <img class="meta-icon" src="img/logos/fox-orange-transparent-300x300.png" alt="FOX" />
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="ia-creations">
+      <div class="section-head">
+        <h2>IA Creations</h2>
+        <span>760x760 showcase</span>
+      </div>
+      <div class="carousel ia-carousel" data-flickity='{"cellAlign":"left","contain":true,"wrapAround":false,"pageDots":false,"groupCells":false}'>
+        <article class="carousel-cell card-horizontal ia-card">
+          <div class="card-media">
+            <img src="img/ia-creations/capiango-el-ultimo-malon-760x760.png" alt="Capiango" />
+          </div>
+          <div class="content">
+            <h3>Capiango</h3>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal ia-card">
+          <div class="card-media">
+            <img src="img/ia-creations/daughters-of-metzli-760x760.jpeg" alt="Daughters of Metzli" />
+          </div>
+          <div class="content">
+            <h3>Daughters of Metzli</h3>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal ia-card">
+          <div class="card-media">
+            <img src="img/ia-creations/elegidos-del-jaguar-02-760x760.jpg" alt="Elegidos del Jaguar" />
+          </div>
+          <div class="content">
+            <h3>Elegidos del Jaguar</h3>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal ia-card">
+          <div class="card-media">
+            <img src="img/ia-creations/inxya-cronicas-del-quinto-alba-760x760.jpeg" alt="Inxya: Crónicas del Quinto Alba" />
+          </div>
+          <div class="content">
+            <h3>Inxya: Crónicas del Quinto Alba</h3>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal ia-card">
+          <div class="card-media">
+            <img src="img/ia-creations/new-condor-crux-760x760.jpeg" alt="New Condor Crux" />
+          </div>
+          <div class="content">
+            <h3>New Condor Crux</h3>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal ia-card">
+          <div class="card-media">
+            <img src="img/ia-creations/new-kaliman-760x760.jpg" alt="New Kaliman" />
+          </div>
+          <div class="content">
+            <h3>New Kaliman</h3>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal ia-card">
+          <div class="card-media">
+            <img src="img/ia-creations/new-pantera-760x760.jpeg" alt="New Pantera" />
+          </div>
+          <div class="content">
+            <h3>New Pantera</h3>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal ia-card">
+          <div class="card-media">
+            <img src="img/ia-creations/solarquis-760x760.jpeg" alt="Solarquis" />
+          </div>
+          <div class="content">
+            <h3>Solarquis</h3>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal ia-card">
+          <div class="card-media">
+            <img src="img/ia-creations/starshift-team-760x760.jpeg" alt="Starshift Team" />
+          </div>
+          <div class="content">
+            <h3>Starshift Team</h3>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal ia-card">
+          <div class="card-media">
+            <img src="img/ia-creations/tlatoani-guardianes-quinto-sol-01-760x760.jpg" alt="Tlatoani: Guardianes del Quinto Sol" />
+          </div>
+          <div class="content">
+            <h3>Tlatoani: Guardianes del Quinto Sol</h3>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="action-adventure-series">
+      <div class="section-head">
+        <h2>Action/Adventure Series</h2>
+        <span>6 series de acción</span>
+      </div>
+      <div class="carousel adult-series-carousel" data-flickity='{"cellAlign":"left","contain":true,"wrapAround":false,"pageDots":false,"groupCells":false}'>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/series/action/rey-mysterio-vertical-280x420.jpg" alt="Rey Mysterio vs la Oscuridad" />
+          </div>
+          <div class="content">
+            <h3>Rey Mysterio vs la Oscuridad</h3>
+            <div class="card-meta">
+              <span class="meta-note">2023-Present</span>
+              <img class="meta-icon" src="img/logos/cartoon-network-transparent.png" alt="Cartoon Network" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/series/action/memorias-idhun-280x420.png" alt="Memorias de Idhún" />
+          </div>
+          <div class="content">
+            <h3>Memorias de Idhún</h3>
+            <div class="card-meta">
+              <span class="meta-note">2020-2021</span>
+              <img class="meta-icon" src="img/logos/netflix-red.png" alt="Netflix" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/series/action/onyx-equinox-vertical-280x420.jpg" alt="Onyx Equinox" />
+          </div>
+          <div class="content">
+            <h3>Onyx Equinox</h3>
+            <div class="card-meta">
+              <span class="meta-note">2020</span>
+              <img class="meta-icon" src="img/logos/crunchyroll-transparent-100x100.png" alt="Crunchyroll" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/series/action/seis-manos-vertical-280x420.jpg" alt="Seis Manos" />
+          </div>
+          <div class="content">
+            <h3>Seis Manos</h3>
+            <div class="card-meta">
+              <span class="meta-note">2019</span>
+              <img class="meta-icon" src="img/logos/netflix-red.png" alt="Netflix" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/series/action/virtual-hero-vertical-280x420.jpg" alt="Virtual Hero" />
+          </div>
+          <div class="content">
+            <h3>Virtual Hero</h3>
+            <div class="card-meta">
+              <span class="meta-note">2018</span>
+              <img class="meta-icon" src="img/logos/movistar-plus-logo-blue-transparent.png" alt="Movistar+" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/series/action/cybersix-vertical-280x420.jpg" alt="Cybersix" />
+          </div>
+          <div class="content">
+            <h3>Cybersix</h3>
+            <div class="card-meta">
+              <span class="meta-note">1999</span>
+              <img class="meta-icon" src="img/logos/tms-blue-transparent.png" alt="TMS" />
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="all-ages-projects">
+      <div class="section-head">
+        <h2>All Ages Projects</h2>
+        <span>8 proyectos para toda la familia</span>
+      </div>
+      <div class="carousel horizontal-carousel" data-flickity='{"cellAlign":"left","contain":true,"wrapAround":false,"pageDots":false,"groupCells":false}'>
+        <article class="carousel-cell card-horizontal">
+          <div class="card-media">
+            <img src="img/hor/all ages/las-hermanas-del-desierto-horizontal-320x180px.png" alt="Las Hermanas del Desierto" />
+          </div>
+          <div class="content">
+            <h3>Las Hermanas del Desierto</h3>
+            <div class="card-meta">
+              <span class="meta-note">2025</span>
+              <img class="meta-icon" src="img/logos/max-grey-transparent.png" alt="Max" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal">
+          <div class="card-media">
+            <img src="img/hor/all ages/runa-horizontal-320x180.png" alt="Runa" />
+          </div>
+          <div class="content">
+            <h3>Runa</h3>
+            <div class="card-meta">
+              <span class="meta-note">2025</span>
+              <img class="meta-icon" src="img/flags/argentina.png" alt="Argentina" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal">
+          <div class="card-media">
+            <img src="img/hor/all ages/dont-kill-rumble-horizontal-320x180.jpg" alt="Don't Kill Rumble" />
+          </div>
+          <div class="content">
+            <h3>Don't Kill Rumble</h3>
+            <div class="card-meta">
+              <span class="meta-note">2022</span>
+              <img class="meta-icon" src="img/flags/argentina.png" alt="Argentina" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal">
+          <div class="card-media">
+            <img src="img/hor/all ages/magma-horizontal-320x180.jpg" alt="Magma" />
+          </div>
+          <div class="content">
+            <h3>Magma</h3>
+            <div class="card-meta">
+              <span class="meta-note">Robson Menezes Dos Santos</span>
+              <img class="meta-icon" src="img/flags/brazil.png" alt="Brasil" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal">
+          <div class="card-media">
+            <img src="img/hor/all ages/floricienta-animada-320x180.png" alt="Floricienta Animada" />
+          </div>
+          <div class="content">
+            <h3>Floricienta Animada</h3>
+            <div class="card-meta">
+              <span class="meta-note">Cris Morena</span>
+              <img class="meta-icon" src="img/flags/argentina.png" alt="Argentina" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal">
+          <div class="card-media">
+            <img src="img/hor/all ages/turma-da-monica-geracao-12-320x180.png" alt="Turma da Mônica Geração 12" />
+          </div>
+          <div class="content">
+            <h3>Turma da Mônica Geração 12</h3>
+            <div class="card-meta">
+              <span class="meta-note">Mauricio de Sousa Produções (MSP)</span>
+              <img class="meta-icon" src="img/flags/brazil.png" alt="Brasil" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal">
+          <div class="card-media">
+            <img src="img/hor/all ages/el-delirio-de-ani-horizontal-320x180.jpg" alt="El Delirio de Ani" />
+          </div>
+          <div class="content">
+            <h3>El Delirio de Ani</h3>
+            <div class="card-meta">
+              <span class="meta-note">Andrea Jen</span>
+              <img class="meta-icon" src="img/flags/argentina.png" alt="Argentina" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal">
+          <div class="card-media">
+            <img src="img/hor/all ages/rebelde-comic-320x180.png" alt="Rebelde, el Cómic" />
+          </div>
+          <div class="content">
+            <h3>Rebelde, el Cómic</h3>
+            <div class="card-meta">
+              <span class="meta-note">Kaboom Estudio</span>
+              <img class="meta-icon" src="img/flags/mexico.png" alt="México" />
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="comics">
+      <div class="section-head">
+        <h2>Comics</h2>
+        <span>9 cómics destacados</span>
+      </div>
+      <div class="carousel adult-series-carousel" data-flickity='{"cellAlign":"left","contain":true,"wrapAround":false,"pageDots":false,"groupCells":false}'>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/comics/sereno-280x420.png" alt="Sereno" />
+          </div>
+          <div class="content">
+            <h3>Sereno</h3>
+            <div class="card-meta">
+              <span class="meta-note">Luciano Vecchio</span>
+              <img class="meta-icon" src="img/flags/argentina.png" alt="Argentina" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/comics/hecatombe-280x420.png" alt="Hecatombe" />
+          </div>
+          <div class="content">
+            <h3>Hecatombe</h3>
+            <div class="card-meta">
+              <span class="meta-note">Super Pruno</span>
+              <img class="meta-icon" src="img/flags/brazil.png" alt="Brasil" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/comics/o-doutrinador-280x420.png" alt="O Doutrinador" />
+          </div>
+          <div class="content">
+            <h3>O Doutrinador</h3>
+            <div class="card-meta">
+              <span class="meta-note">Luciano Cunha</span>
+              <img class="meta-icon" src="img/flags/brazil.png" alt="Brasil" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/comics/cazador-vertical-280x420.png" alt="Cazador" />
+          </div>
+          <div class="content">
+            <h3>Cazador</h3>
+            <div class="card-meta">
+              <span class="meta-note">Jorge Lucas</span>
+              <img class="meta-icon" src="img/flags/argentina.png" alt="Argentina" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/comics/reparaciones-fina-280x420.png" alt="Reparaciones Fina" />
+          </div>
+          <div class="content">
+            <h3>Reparaciones Fina</h3>
+            <div class="card-meta">
+              <span class="meta-note">2006</span>
+              <img class="meta-icon" src="img/flags/argentina.png" alt="Argentina" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/comics/operacion-tower-tank-280x420.png" alt="Operation Tower Tank" />
+          </div>
+          <div class="content">
+            <h3>Operation Tower Tank</h3>
+            <div class="card-meta">
+              <span class="meta-note">2007</span>
+              <img class="meta-icon" src="img/flags/argentina.png" alt="Argentina" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/comics/gato-negro-280x420.png" alt="Gato Negro" />
+          </div>
+          <div class="content">
+            <h3>Gato Negro</h3>
+            <div class="card-meta">
+              <span class="meta-note">Richard Domínguez</span>
+              <img class="meta-icon" src="img/flags/mexico.png" alt="México" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/comics/karmatron-280x420.png" alt="Karmatrón" />
+          </div>
+          <div class="content">
+            <h3>Karmatrón</h3>
+            <div class="card-meta">
+              <span class="meta-note">Óscar González Loyo</span>
+              <img class="meta-icon" src="img/flags/mexico.png" alt="México" />
+            </div>
+          </div>
+        </article>
+        <article class="carousel-cell card-horizontal adult-series-card">
+          <div class="card-media">
+            <img src="img/comics/el-pantera-vertical-280x420.png" alt="El Pantera" />
+          </div>
+          <div class="content">
+            <h3>El Pantera</h3>
+            <div class="card-meta">
+              <span class="meta-note">Daniel Muñoz Martínez</span>
+              <img class="meta-icon" src="img/flags/mexico.png" alt="México" />
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="footer-note">Fusion archive sample layout inspired by editorial galleries</div>
+  </main>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+</body>
+</html>
