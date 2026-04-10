@@ -139,6 +139,7 @@
       position: relative;
       display: grid;
       grid-template-rows: 1fr auto;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
     }
 
     .hero-card .hero-content {
@@ -193,6 +194,7 @@
       border-radius: 12px;
       border: 1px solid var(--line);
       background: rgba(246, 241, 231, 0.75);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
     }
 
     .stack-title {
@@ -219,6 +221,43 @@
       text-transform: uppercase;
       letter-spacing: 1.8px;
       font-size: 11px;
+    }
+
+    .section-story {
+      margin: 10px 0 0;
+      max-width: 780px;
+      font-size: 14px;
+      line-height: 1.45;
+      color: rgba(31, 27, 22, 0.76);
+    }
+
+    .ia-summary {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .ia-summary-card {
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(246, 241, 231, 0.88);
+      box-shadow: 0 8px 18px rgba(20, 16, 12, 0.06);
+      display: grid;
+      gap: 4px;
+    }
+
+    .ia-summary-card strong {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.1px;
+    }
+
+    .ia-summary-card span {
+      font-size: 13px;
+      line-height: 1.35;
+      color: rgba(31, 27, 22, 0.72);
     }
 
     .grid-horizontal {
@@ -269,6 +308,15 @@
       display: grid;
       grid-template-rows: auto 1fr;
       box-shadow: 0 10px 22px rgba(30, 24, 20, 0.12);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .card-horizontal:hover,
+    .stack-card:hover,
+    .hero-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 30px rgba(20, 16, 12, 0.16);
+      border-color: rgba(204, 77, 47, 0.28);
     }
 
     .card-media {
@@ -308,6 +356,14 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 220ms ease, filter 220ms ease;
+    }
+
+    .card-horizontal:hover .card-media img,
+    .stack-card:hover img,
+    .hero-card:hover img {
+      transform: scale(1.03);
+      filter: saturate(1.04);
     }
 
     .card-tag {
@@ -445,6 +501,315 @@
       width: fit-content;
     }
 
+    .store-chip {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(204, 77, 47, 0.25);
+      background: rgba(204, 77, 47, 0.08);
+      color: var(--ember);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .store-offer {
+      display: grid;
+      gap: 6px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(31, 27, 22, 0.18);
+    }
+
+    .store-line {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: rgba(31, 27, 22, 0.68);
+    }
+
+    .store-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .store-price {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .store-link {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: var(--ocean);
+    }
+
+    .funding-spotlight {
+      background: linear-gradient(135deg, rgba(42, 111, 127, 0.08), rgba(204, 77, 47, 0.08));
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .funding-grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1.35fr 0.95fr;
+      gap: 18px;
+    }
+
+    .funding-feature,
+    .funding-list {
+      background: rgba(246, 241, 231, 0.92);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .funding-feature {
+      display: grid;
+      gap: 14px;
+    }
+
+    .funding-feature h3 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.1;
+    }
+
+    .funding-feature p,
+    .funding-mini p {
+      margin: 0;
+      font-size: 14px;
+      color: rgba(31, 27, 22, 0.76);
+    }
+
+    .funding-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: rgba(31, 27, 22, 0.75);
+      font-weight: 600;
+    }
+
+    .progress-track {
+      height: 10px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(31, 27, 22, 0.12);
+      border: 1px solid rgba(31, 27, 22, 0.08);
+    }
+
+    .progress-fill {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--ember), #e58b64);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .funding-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.1px;
+    }
+
+    .funding-link.primary {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .ia-funding-note {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.4;
+      color: rgba(31, 27, 22, 0.72);
+    }
+
+    .ia-cta {
+      width: fit-content;
+      margin-top: 2px;
+    }
+
+    .ia-card {
+      cursor: pointer;
+    }
+
+    .ia-card.lead-project {
+      border-color: rgba(42, 111, 127, 0.35);
+      box-shadow: 0 14px 30px rgba(42, 111, 127, 0.14);
+    }
+
+    .ia-card.unlock-project {
+      border-color: rgba(204, 77, 47, 0.35);
+      box-shadow: 0 14px 30px rgba(204, 77, 47, 0.12);
+    }
+
+    .lead-badge {
+      background: rgba(42, 111, 127, 0.12);
+      color: var(--ocean);
+      border-color: rgba(42, 111, 127, 0.28);
+    }
+
+    .unlock-badge {
+      background: rgba(204, 77, 47, 0.1);
+      color: var(--ember);
+      border-color: rgba(204, 77, 47, 0.28);
+    }
+
+    .unlock-note {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.1px;
+      color: var(--ember);
+    }
+
+    .project-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(20, 16, 12, 0.58);
+      backdrop-filter: blur(6px);
+    }
+
+    .project-modal.is-open {
+      display: flex;
+    }
+
+    .modal-panel {
+      position: relative;
+      width: min(920px, 100%);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 24px 60px rgba(12, 10, 8, 0.24);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+    }
+
+    .modal-art {
+      background: rgba(31, 27, 22, 0.04);
+    }
+
+    .modal-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
+    }
+
+    .modal-copy {
+      padding: 22px 22px 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .modal-copy h3 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.1;
+    }
+
+    .modal-copy p {
+      margin: 0;
+      color: rgba(31, 27, 22, 0.76);
+      line-height: 1.45;
+    }
+
+    .modal-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .modal-list li {
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(31, 27, 22, 0.08);
+      background: rgba(255, 255, 255, 0.45);
+      font-size: 13px;
+    }
+
+    .modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--ink);
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .funding-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .funding-mini {
+      display: grid;
+      gap: 8px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fffaf2;
+    }
+
+    .funding-mini h4 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .funding-mini strong {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--ember);
+    }
+
     .footer-note {
       margin-top: 50px;
       text-align: center;
@@ -459,6 +824,15 @@
         grid-template-columns: 1fr;
       }
       .stack-card {
+        grid-template-columns: 1fr;
+      }
+      .funding-grid {
+        grid-template-columns: 1fr;
+      }
+      .ia-summary {
+        grid-template-columns: 1fr;
+      }
+      .modal-panel {
         grid-template-columns: 1fr;
       }
     }
@@ -504,7 +878,7 @@
       </div>
       <div class="top-actions">
         <a class="pill" href="#horizontal">Series</a>
-        <a class="pill" href="#vertical">Comics</a>
+        <a class="pill" href="#comics">Comics</a>
         <a class="pill emph" href="#insights">Spotlight</a>
       </div>
     </div>
@@ -724,7 +1098,22 @@
     <section id="ia-creations">
       <div class="section-head">
         <h2>IA Creations</h2>
-        <span>760x760 showcase</span>
+        <span>10 originales en etapa upfront</span>
+      </div>
+      <p class="section-story">La idea es simple: si 1 o 2 proyectos despegan, ayudan a financiar un tercero. Cada serie muestra su avance y abre una invitación clara para <strong>Convertite en Productor</strong>.</p>
+      <div class="ia-summary" aria-label="Resumen de financiamiento upfront">
+        <div class="ia-summary-card">
+          <strong>2 proyectos en tracción</strong>
+          <span>Inxya y Solarquis ya empujan la ronda con más del 70% del objetivo.</span>
+        </div>
+        <div class="ia-summary-card">
+          <strong>1 proyecto por desbloquear</strong>
+          <span>Tlatoani entra en producción al cerrarse la ronda de los títulos líderes.</span>
+        </div>
+        <div class="ia-summary-card">
+          <strong>349 productores activos</strong>
+          <span>La comunidad ya funciona como motor inicial del próximo slate original.</span>
+        </div>
       </div>
       <div class="carousel ia-carousel" data-flickity='{"cellAlign":"left","contain":true,"wrapAround":false,"pageDots":false,"groupCells":false}'>
         <article class="carousel-cell card-horizontal ia-card">
@@ -732,7 +1121,17 @@
             <img src="img/ia-creations/capiango-el-ultimo-malon-760x760.png" alt="Capiango" />
           </div>
           <div class="content">
+            <span class="badge">Upfront abierto</span>
             <h3>Capiango</h3>
+            <p class="ia-funding-note">Un thriller mitológico que puede ayudar a destrabar el siguiente original del slate.</p>
+            <div class="funding-metrics">
+              <span><strong>38%</strong> financiado</span>
+              <span>76 productores</span>
+            </div>
+            <div class="progress-track" aria-label="38 percent funded">
+              <span class="progress-fill" style="width: 38%;"></span>
+            </div>
+            <a class="funding-link primary ia-cta" href="#ia-creations">Convertite en Productor</a>
           </div>
         </article>
         <article class="carousel-cell card-horizontal ia-card">
@@ -740,7 +1139,17 @@
             <img src="img/ia-creations/daughters-of-metzli-760x760.jpeg" alt="Daughters of Metzli" />
           </div>
           <div class="content">
+            <span class="badge">Backing round</span>
             <h3>Daughters of Metzli</h3>
+            <p class="ia-funding-note">Una propuesta YA/épica pensada para probar demanda y habilitar una segunda fase de arte.</p>
+            <div class="funding-metrics">
+              <span><strong>44%</strong> financiado</span>
+              <span>91 productores</span>
+            </div>
+            <div class="progress-track" aria-label="44 percent funded">
+              <span class="progress-fill" style="width: 44%;"></span>
+            </div>
+            <a class="funding-link primary ia-cta" href="#ia-creations">Convertite en Productor</a>
           </div>
         </article>
         <article class="carousel-cell card-horizontal ia-card">
@@ -748,15 +1157,35 @@
             <img src="img/ia-creations/elegidos-del-jaguar-02-760x760.jpg" alt="Elegidos del Jaguar" />
           </div>
           <div class="content">
+            <span class="badge">Pilot slate</span>
             <h3>Elegidos del Jaguar</h3>
+            <p class="ia-funding-note">El objetivo es financiar desarrollo visual y una primera pieza teaser para levantar el tercer proyecto.</p>
+            <div class="funding-metrics">
+              <span><strong>52%</strong> financiado</span>
+              <span>118 productores</span>
+            </div>
+            <div class="progress-track" aria-label="52 percent funded">
+              <span class="progress-fill" style="width: 52%;"></span>
+            </div>
+            <a class="funding-link primary ia-cta" href="#ia-creations">Convertite en Productor</a>
           </div>
         </article>
-        <article class="carousel-cell card-horizontal ia-card">
+        <article class="carousel-cell card-horizontal ia-card lead-project">
           <div class="card-media">
             <img src="img/ia-creations/inxya-cronicas-del-quinto-alba-760x760.jpeg" alt="Inxya: Crónicas del Quinto Alba" />
           </div>
           <div class="content">
+            <span class="badge lead-badge">Funding leader</span>
             <h3>Inxya: Crónicas del Quinto Alba</h3>
+            <p class="ia-funding-note">El proyecto tractor del slate: si cierra esta ronda, ayuda a liberar una tercera producción original.</p>
+            <div class="funding-metrics">
+              <span><strong>74%</strong> financiado</span>
+              <span>182 productores</span>
+            </div>
+            <div class="progress-track" aria-label="74 percent funded">
+              <span class="progress-fill" style="width: 74%;"></span>
+            </div>
+            <a class="funding-link primary ia-cta" href="#ia-creations">Convertite en Productor</a>
           </div>
         </article>
         <article class="carousel-cell card-horizontal ia-card">
@@ -764,7 +1193,17 @@
             <img src="img/ia-creations/new-condor-crux-760x760.jpeg" alt="New Condor Crux" />
           </div>
           <div class="content">
+            <span class="badge">Open slate</span>
             <h3>New Condor Crux</h3>
+            <p class="ia-funding-note">Upfront de aventura espacial pensado para sostener arte, biblia y primer animatic.</p>
+            <div class="funding-metrics">
+              <span><strong>35%</strong> financiado</span>
+              <span>69 productores</span>
+            </div>
+            <div class="progress-track" aria-label="35 percent funded">
+              <span class="progress-fill" style="width: 35%;"></span>
+            </div>
+            <a class="funding-link primary ia-cta" href="#ia-creations">Convertite en Productor</a>
           </div>
         </article>
         <article class="carousel-cell card-horizontal ia-card">
@@ -772,7 +1211,17 @@
             <img src="img/ia-creations/new-kaliman-760x760.jpg" alt="New Kaliman" />
           </div>
           <div class="content">
+            <span class="badge">Producer pass</span>
             <h3>New Kaliman</h3>
+            <p class="ia-funding-note">Una ronda temprana para medir tracción y apalancar el desarrollo del siguiente título del paquete.</p>
+            <div class="funding-metrics">
+              <span><strong>47%</strong> financiado</span>
+              <span>103 productores</span>
+            </div>
+            <div class="progress-track" aria-label="47 percent funded">
+              <span class="progress-fill" style="width: 47%;"></span>
+            </div>
+            <a class="funding-link primary ia-cta" href="#ia-creations">Convertite en Productor</a>
           </div>
         </article>
         <article class="carousel-cell card-horizontal ia-card">
@@ -780,15 +1229,35 @@
             <img src="img/ia-creations/new-pantera-760x760.jpeg" alt="New Pantera" />
           </div>
           <div class="content">
+            <span class="badge">Backer round</span>
             <h3>New Pantera</h3>
+            <p class="ia-funding-note">Modelo tipo Reelshort: una IP fuerte ayuda a empujar una nueva apuesta del catálogo.</p>
+            <div class="funding-metrics">
+              <span><strong>58%</strong> financiado</span>
+              <span>129 productores</span>
+            </div>
+            <div class="progress-track" aria-label="58 percent funded">
+              <span class="progress-fill" style="width: 58%;"></span>
+            </div>
+            <a class="funding-link primary ia-cta" href="#ia-creations">Convertite en Productor</a>
           </div>
         </article>
-        <article class="carousel-cell card-horizontal ia-card">
+        <article class="carousel-cell card-horizontal ia-card lead-project">
           <div class="card-media">
             <img src="img/ia-creations/solarquis-760x760.jpeg" alt="Solarquis" />
           </div>
           <div class="content">
+            <span class="badge lead-badge">Funding leader</span>
             <h3>Solarquis</h3>
+            <p class="ia-funding-note">Un pitch solar-punk con potencial para convertirse en uno de los motores del slate anual.</p>
+            <div class="funding-metrics">
+              <span><strong>71%</strong> financiado</span>
+              <span>167 productores</span>
+            </div>
+            <div class="progress-track" aria-label="71 percent funded">
+              <span class="progress-fill" style="width: 71%;"></span>
+            </div>
+            <a class="funding-link primary ia-cta" href="#ia-creations">Convertite en Productor</a>
           </div>
         </article>
         <article class="carousel-cell card-horizontal ia-card">
@@ -796,15 +1265,36 @@
             <img src="img/ia-creations/starshift-team-760x760.jpeg" alt="Starshift Team" />
           </div>
           <div class="content">
+            <span class="badge">Slate builder</span>
             <h3>Starshift Team</h3>
+            <p class="ia-funding-note">Apuesta coral para activar comunidad y generar caja para el próximo development deal.</p>
+            <div class="funding-metrics">
+              <span><strong>33%</strong> financiado</span>
+              <span>64 productores</span>
+            </div>
+            <div class="progress-track" aria-label="33 percent funded">
+              <span class="progress-fill" style="width: 33%;"></span>
+            </div>
+            <a class="funding-link primary ia-cta" href="#ia-creations">Convertite en Productor</a>
           </div>
         </article>
-        <article class="carousel-cell card-horizontal ia-card">
+        <article class="carousel-cell card-horizontal ia-card unlock-project">
           <div class="card-media">
             <img src="img/ia-creations/tlatoani-guardianes-quinto-sol-01-760x760.jpg" alt="Tlatoani: Guardianes del Quinto Sol" />
           </div>
           <div class="content">
+            <span class="badge unlock-badge">Unlock next</span>
             <h3>Tlatoani: Guardianes del Quinto Sol</h3>
+            <p class="ia-funding-note">Uno de los títulos más claros para jugar al upfront: si cierra, empuja la tercera producción del ciclo.</p>
+            <div class="funding-metrics">
+              <span><strong>24%</strong> fondeo inicial</span>
+              <span>desbloqueable</span>
+            </div>
+            <div class="progress-track" aria-label="24 percent unlocked">
+              <span class="progress-fill" style="width: 24%;"></span>
+            </div>
+            <span class="unlock-note">Se activa al cerrar la ronda de los títulos líderes</span>
+            <a class="funding-link primary ia-cta" href="#ia-creations">Convertite en Productor</a>
           </div>
         </article>
       </div>
@@ -999,7 +1489,7 @@
     <section id="comics">
       <div class="section-head">
         <h2>Comics</h2>
-        <span>9 cómics destacados</span>
+        <span>9 cómics destacados · collector drop</span>
       </div>
       <div class="carousel adult-series-carousel" data-flickity='{"cellAlign":"left","contain":true,"wrapAround":false,"pageDots":false,"groupCells":false}'>
         <article class="carousel-cell card-horizontal adult-series-card">
@@ -1007,10 +1497,18 @@
             <img src="img/comics/sereno-280x420.png" alt="Sereno" />
           </div>
           <div class="content">
+            <span class="store-chip">Collector print</span>
             <h3>Sereno</h3>
             <div class="card-meta">
               <span class="meta-note">Luciano Vecchio</span>
               <img class="meta-icon" src="img/flags/argentina.png" alt="Argentina" />
+            </div>
+            <div class="store-offer">
+              <span class="store-line">Preventa abierta · edición limitada</span>
+              <div class="store-price-row">
+                <span class="store-price">Desde ARS 12.900</span>
+                <a class="store-link" href="#comics">Reservar ↗</a>
+              </div>
             </div>
           </div>
         </article>
@@ -1019,10 +1517,18 @@
             <img src="img/comics/hecatombe-280x420.png" alt="Hecatombe" />
           </div>
           <div class="content">
+            <span class="store-chip">Art edition</span>
             <h3>Hecatombe</h3>
             <div class="card-meta">
               <span class="meta-note">Super Pruno</span>
               <img class="meta-icon" src="img/flags/brazil.png" alt="Brasil" />
+            </div>
+            <div class="store-offer">
+              <span class="store-line">Merch bundle · stock limitado</span>
+              <div class="store-price-row">
+                <span class="store-price">Desde ARS 11.900</span>
+                <a class="store-link" href="#comics">Ver merch ↗</a>
+              </div>
             </div>
           </div>
         </article>
@@ -1031,10 +1537,18 @@
             <img src="img/comics/o-doutrinador-280x420.png" alt="O Doutrinador" />
           </div>
           <div class="content">
+            <span class="store-chip">Digital + print</span>
             <h3>O Doutrinador</h3>
             <div class="card-meta">
               <span class="meta-note">Luciano Cunha</span>
               <img class="meta-icon" src="img/flags/brazil.png" alt="Brasil" />
+            </div>
+            <div class="store-offer">
+              <span class="store-line">Bundle disponible · tirada especial</span>
+              <div class="store-price-row">
+                <span class="store-price">Desde ARS 15.500</span>
+                <a class="store-link" href="#comics">Ver edición ↗</a>
+              </div>
             </div>
           </div>
         </article>
@@ -1043,10 +1557,18 @@
             <img src="img/comics/cazador-vertical-280x420.png" alt="Cazador" />
           </div>
           <div class="content">
+            <span class="store-chip">Collector merch</span>
             <h3>Cazador</h3>
             <div class="card-meta">
               <span class="meta-note">Jorge Lucas</span>
               <img class="meta-icon" src="img/flags/argentina.png" alt="Argentina" />
+            </div>
+            <div class="store-offer">
+              <span class="store-line">Drop especial · poster + print</span>
+              <div class="store-price-row">
+                <span class="store-price">Desde ARS 14.200</span>
+                <a class="store-link" href="#comics">Explorar ↗</a>
+              </div>
             </div>
           </div>
         </article>
@@ -1055,10 +1577,18 @@
             <img src="img/comics/reparaciones-fina-280x420.png" alt="Reparaciones Fina" />
           </div>
           <div class="content">
+            <span class="store-chip">Signed run</span>
             <h3>Reparaciones Fina</h3>
             <div class="card-meta">
               <span class="meta-note">2006</span>
               <img class="meta-icon" src="img/flags/argentina.png" alt="Argentina" />
+            </div>
+            <div class="store-offer">
+              <span class="store-line">Reserva abierta · edición firmada</span>
+              <div class="store-price-row">
+                <span class="store-price">Desde ARS 10.800</span>
+                <a class="store-link" href="#comics">Reservar ↗</a>
+              </div>
             </div>
           </div>
         </article>
@@ -1067,10 +1597,18 @@
             <img src="img/comics/operacion-tower-tank-280x420.png" alt="Operation Tower Tank" />
           </div>
           <div class="content">
+            <span class="store-chip">Bundle drop</span>
             <h3>Operation Tower Tank</h3>
             <div class="card-meta">
               <span class="meta-note">2007</span>
               <img class="meta-icon" src="img/flags/argentina.png" alt="Argentina" />
+            </div>
+            <div class="store-offer">
+              <span class="store-line">Comic + print · acceso temprano</span>
+              <div class="store-price-row">
+                <span class="store-price">Desde ARS 13.100</span>
+                <a class="store-link" href="#comics">Comprar ↗</a>
+              </div>
             </div>
           </div>
         </article>
@@ -1079,10 +1617,18 @@
             <img src="img/comics/gato-negro-280x420.png" alt="Gato Negro" />
           </div>
           <div class="content">
+            <span class="store-chip">Fan pack</span>
             <h3>Gato Negro</h3>
             <div class="card-meta">
               <span class="meta-note">Richard Domínguez</span>
               <img class="meta-icon" src="img/flags/mexico.png" alt="México" />
+            </div>
+            <div class="store-offer">
+              <span class="store-line">Merch oficial · lote especial</span>
+              <div class="store-price-row">
+                <span class="store-price">Desde ARS 12.400</span>
+                <a class="store-link" href="#comics">Ver merch ↗</a>
+              </div>
             </div>
           </div>
         </article>
@@ -1091,10 +1637,18 @@
             <img src="img/comics/karmatron-280x420.png" alt="Karmatrón" />
           </div>
           <div class="content">
+            <span class="store-chip">Reserve copy</span>
             <h3>Karmatrón</h3>
             <div class="card-meta">
               <span class="meta-note">Óscar González Loyo</span>
               <img class="meta-icon" src="img/flags/mexico.png" alt="México" />
+            </div>
+            <div class="store-offer">
+              <span class="store-line">Colección premium · acceso temprano</span>
+              <div class="store-price-row">
+                <span class="store-price">Desde ARS 13.800</span>
+                <a class="store-link" href="#comics">Comprar ↗</a>
+              </div>
             </div>
           </div>
         </article>
@@ -1103,10 +1657,18 @@
             <img src="img/comics/el-pantera-vertical-280x420.png" alt="El Pantera" />
           </div>
           <div class="content">
+            <span class="store-chip">Premium reserve</span>
             <h3>El Pantera</h3>
             <div class="card-meta">
               <span class="meta-note">Daniel Muñoz Martínez</span>
               <img class="meta-icon" src="img/flags/mexico.png" alt="México" />
+            </div>
+            <div class="store-offer">
+              <span class="store-line">Edición destacada · preventa disponible</span>
+              <div class="store-price-row">
+                <span class="store-price">Desde ARS 14.900</span>
+                <a class="store-link" href="#comics">Comprar ↗</a>
+              </div>
             </div>
           </div>
         </article>
@@ -1115,6 +1677,184 @@
 
     <div class="footer-note">Fusion archive sample layout inspired by editorial galleries</div>
   </main>
+
+  <div class="project-modal" id="project-modal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" type="button" aria-label="Cerrar ficha">×</button>
+      <div class="modal-art">
+        <img id="modal-image" src="" alt="" />
+      </div>
+      <div class="modal-copy">
+        <span class="badge" id="modal-badge">Project brief</span>
+        <h3 id="modal-title">Proyecto</h3>
+        <p id="modal-logline">Detalle del proyecto y su rol dentro del slate upfront.</p>
+        <div class="funding-metrics">
+          <span id="modal-metric-primary">Ronda abierta</span>
+          <span id="modal-metric-secondary">Comunidad activa</span>
+        </div>
+        <div class="progress-track" aria-label="Progreso del proyecto">
+          <span class="progress-fill" id="modal-progress" style="width: 0%;"></span>
+        </div>
+        <ul class="modal-list">
+          <li><strong>Meta:</strong> <span id="modal-goal">—</span></li>
+          <li><strong>Rol en el slate:</strong> <span id="modal-role">—</span></li>
+          <li><strong>Próximo hito:</strong> <span id="modal-next">—</span></li>
+        </ul>
+        <div class="modal-actions">
+          <a class="funding-link primary" href="#ia-creations">Convertite en Productor</a>
+          <a class="funding-link" href="#ia-creations">Volver al slate</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  <script>
+    const iaProjectDetails = {
+      "Capiango": {
+        logline: "Thriller mitológico pensado para abrir la primera ronda y sembrar el siguiente original del slate.",
+        goal: "USD 18K para teaser, key art y pitch deck",
+        role: "Proyecto semilla para activar nuevos backers",
+        next: "Cerrar arte base y liberar el desarrollo del tercer título"
+      },
+      "Daughters of Metzli": {
+        logline: "Fantasy YA con foco en audiencia temprana, ideal para testear interés y sostener una segunda fase visual.",
+        goal: "USD 16K para biblia visual y paquete de preventa",
+        role: "Título de validación comercial del slate",
+        next: "Abrir rewards y bundles para supporters"
+      },
+      "Elegidos del Jaguar": {
+        logline: "Apuesta de aventura épica diseñada para financiar teaser, concept art y nuevos unlockables.",
+        goal: "USD 20K para teaser y animatic corto",
+        role: "Mid-slate driver con potencial de expansión",
+        next: "Completar teaser y sumar socios de distribución"
+      },
+      "Inxya: Crónicas del Quinto Alba": {
+        logline: "El proyecto tractor del universo: si cierra su ronda, empuja directamente la producción del siguiente original.",
+        goal: "USD 25K para piloto visual y paquete de venta",
+        role: "Funding leader del slate 2026",
+        next: "Desbloquear la producción inicial de Tlatoani"
+      },
+      "New Condor Crux": {
+        logline: "Sci-fi latino con ambición serial, pensado para sostener biblia, arte y primeras piezas promocionales.",
+        goal: "USD 17K para worldbuilding y proof of concept",
+        role: "Puente entre aventura espacial y slate original",
+        next: "Liberar ronda de arte y test de audiencia"
+      },
+      "New Kaliman": {
+        logline: "Relanzamiento de marca con lógica upfront: medir tracción primero y escalar luego el paquete de producción.",
+        goal: "USD 19K para concept trailer y campaña inicial",
+        role: "IP ancla para ampliar la comunidad",
+        next: "Abrir paquete premium de productores"
+      },
+      "New Pantera": {
+        logline: "Proyecto ideal para el modelo tipo Reelshort: una IP fuerte que ayuda a destrabar nuevas apuestas del catálogo.",
+        goal: "USD 21K para lookdev y assets promocionales",
+        role: "Backer round de alto arrastre",
+        next: "Convertir tracción en fondeo cruzado"
+      },
+      "Solarquis": {
+        logline: "Solar-punk accesible y visualmente potente, pensado como segundo gran tractor del slate anual.",
+        goal: "USD 24K para piloto teaser y marketing inicial",
+        role: "Funding leader junto a Inxya",
+        next: "Cerrar ronda y habilitar un tercer proyecto"
+      },
+      "Starshift Team": {
+        logline: "Proyecto coral de comunidad, útil para sumar productores nuevos y sostener el ritmo del slate.",
+        goal: "USD 15K para pitch reel y onboarding de backers",
+        role: "Slate builder con foco en comunidad",
+        next: "Escalar rewards y participación temprana"
+      },
+      "Tlatoani: Guardianes del Quinto Sol": {
+        logline: "El unlock principal del paquete: entra en producción cuando los títulos líderes terminen de cerrar la ronda.",
+        goal: "USD 22K para activar preproducción y teaser",
+        role: "Proyecto desbloqueable del slate",
+        next: "Activarse al cierre de Inxya y Solarquis"
+      }
+    };
+
+    const modal = document.getElementById("project-modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalBadge = document.getElementById("modal-badge");
+    const modalLogline = document.getElementById("modal-logline");
+    const modalImage = document.getElementById("modal-image");
+    const modalMetricPrimary = document.getElementById("modal-metric-primary");
+    const modalMetricSecondary = document.getElementById("modal-metric-secondary");
+    const modalProgress = document.getElementById("modal-progress");
+    const modalGoal = document.getElementById("modal-goal");
+    const modalRole = document.getElementById("modal-role");
+    const modalNext = document.getElementById("modal-next");
+
+    function openProjectModal(card) {
+      if (!card) return;
+
+      const title = card.querySelector("h3")?.textContent.trim() || "Proyecto";
+      const badge = card.querySelector(".badge")?.textContent.trim() || "Project brief";
+      const image = card.querySelector("img");
+      const metrics = card.querySelectorAll(".funding-metrics span");
+      const progress = card.querySelector(".progress-fill")?.style.width || "0%";
+      const details = iaProjectDetails[title] || {
+        logline: "Proyecto original dentro del slate de financiación de Fusion.",
+        goal: "Meta en definición",
+        role: "Parte del upfront slate",
+        next: "Abrir la siguiente ronda"
+      };
+
+      modalTitle.textContent = title;
+      modalBadge.textContent = badge;
+      modalLogline.textContent = details.logline;
+      modalImage.src = image?.src || "";
+      modalImage.alt = image?.alt || title;
+      modalMetricPrimary.textContent = metrics[0]?.textContent.trim() || "Ronda abierta";
+      modalMetricSecondary.textContent = metrics[1]?.textContent.trim() || "Comunidad activa";
+      modalProgress.style.width = progress;
+      modalGoal.textContent = details.goal;
+      modalRole.textContent = details.role;
+      modalNext.textContent = details.next;
+
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeProjectModal() {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    document.querySelectorAll("#ia-creations .ia-card").forEach((card) => {
+      card.setAttribute("tabindex", "0");
+      card.setAttribute("role", "button");
+
+      card.addEventListener("click", (event) => {
+        if (event.target.closest("a")) {
+          event.preventDefault();
+        }
+        openProjectModal(card);
+      });
+
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openProjectModal(card);
+        }
+      });
+    });
+
+    document.querySelector(".modal-close").addEventListener("click", closeProjectModal);
+
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        closeProjectModal();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && modal.classList.contains("is-open")) {
+        closeProjectModal();
+      }
+    });
+  </script>
 </body>
 </html>
